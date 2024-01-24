@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.deployment" (list . "ffc-ffd-data.deployment") -}}
+{{- define "ffc-ffd-data.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "ffc-ffd-data.container") }}
+{{- end -}}

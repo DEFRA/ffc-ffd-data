@@ -1,9 +1,9 @@
 environment: production
 environmentCode:
-name: ffc-template-node
-namespace: ffc-demo
-workstream: ffc-demo
-image: ffc-template-node
+name: ffc-ffd-data
+namespace: ffc-ffd
+workstream: ffc-ffd
+image: ffc-ffd-data
 
 labels:
   component: service
@@ -12,10 +12,10 @@ appInsights:
   connectionString:
 
 containerConfigMap:
-  name: ffc-template-node-config-map
+  name: ffc-ffd-data-config-map
 
 containerSecret:
-  name: ffc-template-node-container-secret
+  name: ffc-ffd-data-container-secret
   type: Opaque
 
 deployment: {}
