@@ -1,4 +1,6 @@
 const { ApolloServer } = require('@apollo/server')
+const { get } = require('../data')
+
 const typeDefs = `
   type Query {
     customerBusinesses: CustomerBusinesses
@@ -6,6 +8,7 @@ const typeDefs = `
 
   type Business {
     id: Int
+    sbi: String
     name: String
   }
 
@@ -16,16 +19,15 @@ const typeDefs = `
 `
 const resolvers = {
   Query: {
-    customerBusinesses: async () => {
+    customerBusinesses: async (_root, _args, context) => {
+      const response = await get('/organisation/person/3337243/summary?search=', context.crn, context.token)
       return {
-        crn: '123456789',
-        businesses: [{
-          id: 1,
-          name: 'Business 1'
-        }, {
-          id: 2,
-          name: 'Business 2'
-        }]
+        crn: context.crn,
+        businesses: response._data?.map(business => ({
+          id: business.id,
+          sbi: business.sbi,
+          name: business.name
+        })) ?? []
       }
     }
   }
