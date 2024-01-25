@@ -12,4 +12,4 @@ const routes = [].concat(
 
 server.route(routes)
 
-module.exports = server
+module.exports = { server }
