@@ -27,6 +27,14 @@ container:
   limitCpu: 100m
   port: 3000
 
+apim:
+  clientId:
+  clientSecret:
+  scope:
+  ocpSubscriptionKey:
+  authorizationUrl:
+  host:
+
 livenessProbe:
   path: /healthz
   port: 3000
