@@ -1,15 +1,15 @@
 const Wreck = require('@hapi/wreck')
 const FormData = require('form-data')
-const config = require('../config')
+const { apimConfig } = require('../config')
 
 const getApimToken = async () => {
   const data = new FormData()
-  data.append('client_id', config.apimClientId)
-  data.append('client_secret', config.apimClientSecret)
-  data.append('scope', config.apimScope)
+  data.append('client_id', apimConfig.clientId)
+  data.append('client_secret', apimConfig.clientSecret)
+  data.append('scope', apimConfig.scope)
   data.append('grant_type', 'client_credentials')
 
-  const response = await Wreck.post(config.apimAuthorizationUrl, {
+  const response = await Wreck.post(apimConfig.authorizationUrl, {
     headers: data.getHeaders(),
     payload: data,
     json: true
