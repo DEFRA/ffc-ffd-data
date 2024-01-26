@@ -1,22 +1,24 @@
 const { ApolloServer } = require('@apollo/server')
 const { get } = require('../data')
+const { typeDefs } = require('./schema')
 
-const typeDefs = `
-  type Query {
-    customerBusinesses: CustomerBusinesses
-  }
+// const typeDefs = `
+//   type Query {
+//     customerBusinesses: CustomerBusinesses
+//   }
 
-  type Business {
-    id: Int
-    sbi: String
-    name: String
-  }
+//   type Business {
+//     id: Int
+//     sbi: String
+//     name: String
+//   }
 
-  type CustomerBusinesses {
-    crn: String
-    businesses: [Business]
-  }
-`
+//   type CustomerBusinesses {
+//     crn: String
+//     businesses: [Business]
+//   }
+// `
+
 const resolvers = {
   Query: {
     customerBusinesses: async (_root, _args, context) => {
