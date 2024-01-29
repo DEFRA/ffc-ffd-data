@@ -1,5 +1,5 @@
 const { ApolloServer } = require('@apollo/server')
-const { get } = require('../data')
+const { get } = require('../api')
 
 const typeDefs = `
   type Query {
