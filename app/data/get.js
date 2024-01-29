@@ -1,9 +1,14 @@
 const Wreck = require('@hapi/wreck')
 const { apimConfig } = require('../config')
 const { getApimToken } = require('./get-apim-token')
+const retry = require('./retry')
 
-const get = async (request, path, crn, token) => {
-  const apimToken = await getApimToken(request)
+const get = async (path, crn, token) => {
+  return retry(() => getFromApim(path, crn, token))
+}
+
+const getFromApim = async (path, crn, token) => {
+  const apimToken = await getApimToken()
   const { payload } = await Wreck.get(`${apimConfig.host}${path}`, {
     headers: {
       crn,

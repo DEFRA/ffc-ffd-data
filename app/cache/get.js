@@ -1,5 +1,8 @@
-const get = async (request, key) => {
-  return request.server.app.cache.get(key)
+const { getCache } = require('./get-cache')
+
+const get = async (key) => {
+  const cache = getCache()
+  return cache.get(key)
 }
 
-module.exports = get
+module.exports = { get }

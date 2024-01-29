@@ -8,7 +8,7 @@ const schema = Joi.object({
   partition: Joi.string().default('ffc-ffd-data'),
   cacheName: Joi.string().default('ffc-ffd-data'),
   segment: Joi.string().default('ffc-ffd-data'),
-  ttl: Joi.number().integer().default(1000 * 60 * 57) // 58 minutes
+  ttl: Joi.number().integer().default(1000 * 60 * 30000)
 })
 
 const config = {
