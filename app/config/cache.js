@@ -1,8 +1,6 @@
 const Joi = require('joi')
 const { DEVELOPMENT, TEST, PRODUCTION } = require('../constants/environments')
 
-const TTL = 1000 * 60 * 60 // 1 hour
-
 const schema = Joi.object({
   host: Joi.string(),
   port: Joi.number().integer().default(6379),
@@ -10,7 +8,7 @@ const schema = Joi.object({
   partition: Joi.string().default('ffc-ffd-data'),
   cacheName: Joi.string().default('ffc-ffd-data'),
   segment: Joi.string().default('ffc-ffd-data'),
-  ttl: Joi.number().integer().default(TTL)
+  ttl: Joi.number().integer().default(1000 * 60 * 57) // 58 minutes
 })
 
 const config = {
