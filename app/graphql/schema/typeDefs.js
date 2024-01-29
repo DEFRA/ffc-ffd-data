@@ -6,7 +6,7 @@ type Query {
 type Business {
   id: Int
   sbi: String
-  name: String!
+  name: String
 }
 
 type CustomerBusinesses {
