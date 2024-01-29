@@ -37,6 +37,7 @@ apim:
 
 redis:
   host:
+  port: 6380
   password:
 
 livenessProbe:
