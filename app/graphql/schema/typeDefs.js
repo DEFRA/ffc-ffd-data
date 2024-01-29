@@ -4,14 +4,14 @@ type Query {
 }
 
 type Business {
-  id: ID!
-  sbi: String!
+  id: Int
+  sbi: String
   name: String!
 }
 
 type CustomerBusinesses {
-  crn: String!
-  businesses: [Business!]!
+  crn: String
+  businesses: [Business]
 }
 `
 
