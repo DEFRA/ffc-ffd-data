@@ -1,4 +1,4 @@
-const { get } = require('../../data')
+const { get } = require('../../api')
 
 const resolvers = {
   Query: {
