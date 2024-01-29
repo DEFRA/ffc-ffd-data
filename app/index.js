@@ -13,7 +13,7 @@ const init = async () => {
       context: ({ request }) => {
         const token = request.headers.authorization
         const crn = request.headers.crn
-        return { token, crn }
+        return { request, token, crn }
       }
     }
   })
