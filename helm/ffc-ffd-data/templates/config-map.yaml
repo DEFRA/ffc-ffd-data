@@ -9,5 +9,5 @@ data:
   APIM_OCP_SUBSCRIPTION_KEY: {{ quote .Values.apim.ocpSubscriptionKey }}
   APIM_AUTHORIZATION_URL: {{ quote .Values.apim.authorizationUrl }}
   APIM_HOST: {{ quote .Values.apim.host }}
-  REDIS_HOST: {{ quote .Values.container.redisHost }}
+  REDIS_HOST: {{ quote .Values.redis.host }}
 {{- end -}}
