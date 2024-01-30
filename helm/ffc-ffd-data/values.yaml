@@ -35,6 +35,11 @@ apim:
   authorizationUrl:
   host:
 
+redis:
+  host:
+  port: 6380
+  password:
+
 livenessProbe:
   path: /healthz
   port: 3004

@@ -14,3 +14,10 @@ services:
       - ./test-output:/home/node/test-output
       - ./jest.config.js:/home/node/jest.config.js
       - ./package.json:/home/node/package.json
+    environment:
+      APIM_CLIENT_ID: not-real-client-id
+      APIM_CLIENT_SECRET: not-real-client-secret
+      APIM_SCOPE: not-real-scope
+      APIM_OCP_SUBSCRIPTION_KEY: not-real-subscription-key
+      APIM_AUTHORIZATION_URL: not-real-authorization-url
+      APIM_HOST: not-real-host

@@ -5,6 +5,8 @@ services:
       target: production
     image: ffc-ffd-data
     container_name: ffc-ffd-data
+    depends_on:
+      - ffc-ffd-data-redis
     environment:
       APPINSIGHTS_CLOUDROLE: ffc-ffd-data-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
@@ -14,3 +16,7 @@ services:
       APIM_OCP_SUBSCRIPTION_KEY: ${APIM_OCP_SUBSCRIPTION_KEY}
       APIM_AUTHORIZATION_URL: ${APIM_AUTHORIZATION_URL}
       APIM_HOST: ${APIM_HOST}
+      REDIS_HOST: ffc-ffd-data-redis
+
+  ffc-ffd-data-redis:
+    image: redis:6.2.7
