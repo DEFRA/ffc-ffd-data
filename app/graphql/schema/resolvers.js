@@ -26,13 +26,9 @@ const resolvers = {
       }
     },
     addFarm: async (_, { id, animals, quantity }, contextValue) => {
-      // file path to the temp data file:
       const filePath = 'app/temp-data/data.txt'
-      // object that is returned ??? (assuming this because it's what's being added to the data.txt file):
       const farm = { id, animals, quantity }
-      // converting farm object into a json string using JSON.stringify:
       const farmString = JSON.stringify(farm)
-      // adding the stringified farm object to the data.txt file:
       await fs.appendFile(filePath, farmString + '\n')
       return {
         farm,
