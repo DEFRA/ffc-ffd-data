@@ -1,6 +1,5 @@
-const fs = require('node:fs/promises')
 const { get } = require('../../api')
-const tempData = require('../../temp-data/data.txt')
+const fs = require('node:fs/promises')
 
 const resolvers = {
   Query: {
@@ -27,11 +26,14 @@ const resolvers = {
       }
     },
     addFarm: async (_, { id, animals, quantity }, contextValue) => {
-      const filepath = 'app/temp-data/data.txt'
+      // file path to the temp data file:
+      const filePath = 'app/temp-data/data.txt'
+      // object that is returned ??? (assuming this because it's what's being added to the data.txt file):
       const farm = { id, animals, quantity }
-      // tempData.push(farm)
-      console.log(tempData)
-      await fs.appendFile(filepath, 'content')
+      // converting farm object into a json string using JSON.stringify:
+      const farmString = JSON.stringify(farm)
+      // adding the stringified farm object to the data.txt file:
+      await fs.appendFile(filePath, farmString + '\n')
       return {
         farm,
         code: 200,
