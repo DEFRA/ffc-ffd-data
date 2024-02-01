@@ -26,15 +26,17 @@ const resolvers = {
       }
     },
     addFarm: async (_, { id, animals, quantity }, contextValue) => {
-      const filePath = 'app/temp-data/data.txt'
-      const farm = { id, animals, quantity }
-      const farmString = JSON.stringify(farm)
-      await fs.appendFile(filePath, farmString + '\n')
+      const newFarm = { id, animals, quantity }
+      const filePath = 'app/temp-data/data.js'
+      const farmData = await fs.readFile(filePath, 'utf-8')
+      const data = JSON.parse(farmData)
+      data.tempData.push(newFarm)
+      await fs.writeFile(filePath, JSON.stringify(data, null, 2))
       return {
-        farm,
+        farm: newFarm,
         code: 200,
         success: true,
-        message: 'successful'
+        message: 'Successful'
       }
     }
   }
