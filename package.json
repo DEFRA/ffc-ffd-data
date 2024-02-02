@@ -1,6 +1,6 @@
 {
   "name": "ffc-ffd-data",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Data integration service for Farming Front Door",
   "homepage": "https://github.com/DEFRA/ffc-ffd-data",
   "main": "app/index.js",
