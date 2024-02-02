@@ -1,5 +1,6 @@
-const { get } = require('../../api')
 const fs = require('node:fs/promises')
+const { get } = require('../../api')
+const filePath = 'app/temp-data/data.txt'
 
 const resolvers = {
   Query: {
@@ -26,17 +27,25 @@ const resolvers = {
       }
     },
     addFarm: async (_, { id, animals, quantity }, contextValue) => {
-      const newFarm = { id, animals, quantity }
-      const filePath = 'app/temp-data/data.js'
-      const farmData = await fs.readFile(filePath, 'utf-8')
-      const data = JSON.parse(farmData)
-      data.tempData.push(newFarm)
-      await fs.writeFile(filePath, JSON.stringify(data, null, 2))
-      return {
-        farm: newFarm,
-        code: 200,
-        success: true,
-        message: 'Successful'
+      try {
+        const farm = { id, animals, quantity }
+        const data = JSON.parse(await fs.readFile(filePath))
+        data.push(farm)
+        await fs.writeFile(filePath, JSON.stringify(data))
+        return {
+          farm,
+          code: 200,
+          success: true,
+          message: 'successful'
+        }
+      } catch (err) {
+        console.error(err)
+        return {
+          farm: {},
+          code: 400,
+          success: false,
+          message: err
+        }
       }
     }
   }
